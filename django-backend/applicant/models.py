@@ -13,8 +13,7 @@ class Applicant(models.Model):
     )
 
 
-class Application(models.Model):
-    title = models.CharField(max_length=100)
+class Application(models.Model):    
     description = models.TextField()
     cv = models.URLField()
     STATUS = (
@@ -22,7 +21,7 @@ class Application(models.Model):
         ("accepted", "accepted"),
         ("rejected", "rejected"),
     )
-    status = models.CharField(choices=STATUS, default="pending")
+    status = models.CharField(choices=STATUS, default="pending", max_length=100)
     applicant = models.ForeignKey(
         Applicant, on_delete=models.CASCADE, related_name="applicant_application"
     )
